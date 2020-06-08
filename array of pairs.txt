@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+int  function(int arr[], int size);
+int main()
+{
+    int numofarrys, sizeofarray;
+    scanf("%d",&numofarrys);
+    int ans[numofarrys];
+    for (int i=0; i<numofarrys; i++)
+    {
+        scanf("%d",&sizeofarray);
+        int array[sizeofarray];
+        for (int j =0; j<sizeofarray; j++)
+        {
+            scanf("%d",&array[j]);
+        }
+        int z = function(array,sizeofarray);
+        ans[i]=z;
+    }
+
+    for (int i=0; i<numofarrys; i++)
+    {   printf("\n");
+        if (ans[i]== 0)
+            printf("No");
+        else
+            printf("YES");
+    }
+
+
+    return 0;
+}
+int  function(int arr[], int size)
+{
+    int counter =0,flag=0;
+    for (int i=0; i<size; i++)
+    {
+        if (arr[i]%2==0)
+        {
+            counter++;
+        }
+    }
+    if (counter%2==0 && counter!=0)
+    {
+        return counter;
+    }
+    if (counter%2!=0)
+    {
+        for (int i=0; i<size; i++)
+        {
+            for (int j=0; j<size; j++)
+            {
+                if (arr[i]-arr[j]==1 || arr[i]-arr[j]==-1)
+                    flag++;
+            }
+        }
+        return flag;
+    }
+
+    int x=0;
+    for (int i=0; i<size; i++)
+    {
+        if (arr[i]%2==1)
+            x++;
+    }
+    if (x%2==0)
+        return x;
+    else
+        return 0;
+}
